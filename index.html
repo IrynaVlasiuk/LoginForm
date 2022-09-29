@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="styles.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <main>
+        <div class="container" id="auth-forms">
+            <form id="LoginForm" class="login-form active" action="/" method="POST">
+                <div class="form-names">
+                    <div class="form-name" data-form-class="register-form">Sign Up</div>
+                    <div class="form-name active">Log In</div>
+                </div>
+                <div class="inputs-container">
+                    <div class="form_group">
+                        <input id="userName" type="text" name="login" placeholder="Username">
+                    </div>
+                    <div class="form_group">
+                        <input id="userPassword" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" name="keep-signed" id="checkboxKeepSigned">
+                        <span class="text">Keep me signed in on this device</span>
+                    </div>
+                </div>
+                <div class="buttons-container">
+                    <div class="formGroup">
+                        <button type="button" class="btn-login">Login</button>
+                    </div>
+                </div>
+            </form>
+            <form id="registerForm" class="register-form" action="/" method="POST">
+                <div class="form-names">
+                    <div class="form-name active">Sign Up</div>
+                    <div class="form-name" data-form-class="login-form">Log In</div>
+                </div>
+                <div class="inputs-container">
+                    <div class="form_group">
+                        <input id="firstName" type="text" name="first-name" placeholder="First Name">
+                    </div>
+                    <div class="form_group">
+                        <input id="secondName" type="text" name="second-name" placeholder="Second Name">
+                    </div>
+                    <div class="form_group">
+                        <input id="email" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form_group">
+                        <input id="password" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form_group">
+                        <input id="confirmPassword" type="password" name="confirm-password" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="checkBox">
+                    <input type="checkbox" name="term-conditions" id="checkboxTerm">
+                    <span class="text">I agree with term & conditions</span>
+                </div>
+                <div class="buttons-container">
+                    <div class="formGroup">
+                        <button type="button" class="btn-register">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

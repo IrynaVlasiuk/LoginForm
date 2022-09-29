@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    background-image: url("images/banner_1.webp");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+#auth-forms {
+    width: 40%;
+    margin: auto;
+    position: relative;
+    height: 100%;
+}
+
+#auth-forms .form-names {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color:white;
+    font-weight: bold;
+    width: 80%;
+    justify-content: space-between;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 25px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#auth-forms .form-names .form-name {
+    display: inline-block;
+}
+
+#auth-forms .form-names .form-name:not(.active)::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 4px;
+    background: #489748;
+    transition: width .3s;
+}
+
+#auth-forms .form-names .form-name:not(.active):hover::after {
+    width: 100%;
+}
+
+#auth-forms .form-names .form-name:hover {
+    cursor: pointer;
+}
+
+#auth-forms .form-names .form-name.active {
+  border-bottom: 4px solid red;
+}
+
+#auth-forms form{
+    display: none;
+}
+
+#auth-forms form.active {
+    display: flex;
+}
+
+#auth-forms form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:0;
+    margin: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(41, 39, 39, 0.3);
+    box-shadow: 0 5px 30px black;
+    min-width: 300px;
+    width: 370px;
+    height: fit-content;
+    min-height: 450px;
+    padding: 50px 0px;
+    box-sizing: border-box;
+    color: white;
+}
+
+#auth-forms form .inputs-container {
+    height: 60%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#auth-forms form input:not([type=checkbox]) {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    height: 40px;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 20px;
+    transition: font-size 0.5s;
+    width: 100%;
+    font-family: 'Courgette', cursive;
+    opacity: 0.8;
+}
+
+#auth-forms form input:focus {
+    outline: none;
+    background: transparent;
+}
+
+#auth-forms form input:-webkit-autofill,
+#auth-forms form input:-webkit-autofill:hover,
+#auth-forms form input:-webkit-autofill:focus,
+#auth-forms form input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0px 1000px rgb(0 0 0 / 1%) inset!important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color:rgb(0 0 0 / 1%)!important;
+    -webkit-text-fill-color: white!important;
+}
+
+#auth-forms form input::-webkit-input-placeholder {
+    transition: 0.5s;
+}
+
+#auth-forms form input::-moz-placeholder{
+    transition: 0.5s;
+    background: transparent;
+}
+
+#auth-forms form input:focus::-webkit-input-placeholder {
+    transition: 0.5s;
+    font-size: 14px;
+    position: relative;
+    transform: translate(0, -5px);
+    outline: none;
+}
+
+#auth-forms form input::placeholder {
+    color: white;
+}
+
+#auth-forms form .checkBox {
+    opacity: 0.8;
+}
+
+#auth-forms form .buttons-container button {
+    width: 200px;
+    margin: 25px auto 0px auto;
+    height: 40px;
+    font-size: 19px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 3px;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: inset 0px 0px 30px white;
+}
+
+#auth-forms form .buttons-container button:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 30px 10px white;
+}
+
+
+
