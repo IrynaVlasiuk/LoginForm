@@ -9,26 +9,28 @@
 <body>
     <main>
         <div class="container" id="auth-forms">
-            <form id="LoginForm" class="login-form active" action="/" method="POST">
+            <form id="loginForm" class="login-form active" action="/" method="POST">
                 <div class="form-names">
                     <div class="form-name" data-form-class="register-form">Sign Up</div>
                     <div class="form-name active">Log In</div>
                 </div>
                 <div class="inputs-container">
                     <div class="form_group">
-                        <input id="userName" type="text" name="login" placeholder="Username">
+                        <input id="login" type="text" name="login" placeholder="Username" required>
+                        <span class="login_error info_msg"></span>
                     </div>
                     <div class="form_group">
-                        <input id="userPassword" type="password" name="password" placeholder="Password">
+                        <input id="userPassword" type="password" name="password" placeholder="Password" minlength="6" maxlength="128" required>
+                        <span class="userPassword_error info_msg"></span>
                     </div>
                     <div class="checkBox">
-                        <input type="checkbox" name="keep-signed" id="checkboxKeepSigned">
-                        <span class="text">Keep me signed in on this device</span>
+                        <input type="checkbox" name="keepSigned" id="checkboxKeepSigned">
+                        <label for="checkboxKeepSigned">Keep me signed in on this device</label>
                     </div>
                 </div>
                 <div class="buttons-container">
                     <div class="formGroup">
-                        <button type="button" class="btn-login">Login</button>
+                        <button type="button" class="btn-login" id="btnLogin">Login</button>
                     </div>
                 </div>
             </form>
@@ -39,28 +41,33 @@
                 </div>
                 <div class="inputs-container">
                     <div class="form_group">
-                        <input id="firstName" type="text" name="first-name" placeholder="First Name">
+                        <input id="firstName" type="text" name="first-name" placeholder="First Name" required>
+                        <span class="firstName_error info_msg"></span>
                     </div>
                     <div class="form_group">
-                        <input id="secondName" type="text" name="second-name" placeholder="Second Name">
+                        <input id="secondName" type="text" name="second-name" placeholder="Second Name" required>
+                        <span class="secondName_error info_msg"></span>
                     </div>
                     <div class="form_group">
-                        <input id="email" type="email" name="email" placeholder="Email">
+                        <input id="email" type="email" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" required>
+                        <span class="email_error info_msg"></span>
                     </div>
                     <div class="form_group">
-                        <input id="password" type="password" name="password" placeholder="Password">
+                        <input id="password" type="password" name="password" placeholder="Password" minlength="6" required>
+                        <span class="password_error info_msg"></span>
                     </div>
                     <div class="form_group">
-                        <input id="confirmPassword" type="password" name="confirm-password" placeholder="Confirm Password">
+                        <input id="confirmPassword" type="password" name="confirm-password" placeholder="Confirm Password" minlength="6" maxlength="128" required>
+                        <span class="confirmPassword_error info_msg"></span>
                     </div>
                 </div>
                 <div class="checkBox">
-                    <input type="checkbox" name="term-conditions" id="checkboxTerm">
-                    <span class="text">I agree with term & conditions</span>
+                    <input type="checkbox" name="term-conditions" id="checkboxTerm" required>
+                    <label for="checkboxTerm">I agree with term & conditions</label>
                 </div>
                 <div class="buttons-container">
                     <div class="formGroup">
-                        <button type="button" class="btn-register">Register</button>
+                        <button type="button" class="btn-register" id="btnRegister">Register</button>
                     </div>
                 </div>
             </form>

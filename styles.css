@@ -61,15 +61,19 @@ main {
   border-bottom: 4px solid red;
 }
 
-#auth-forms form{
-    display: none;
+#auth-forms form {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 #auth-forms form.active {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
 }
 
 #auth-forms form {
+    display: flex;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -97,18 +101,25 @@ main {
     justify-content: center;
 }
 
-#auth-forms form input:not([type=checkbox]) {
+#auth-forms form .form_group {
+    margin-bottom: 30px;
+}
+
+#auth-forms form input:not([type="checkbox"]) {
     background: transparent;
     border: none;
     border-bottom: 2px solid white;
     height: 40px;
     color: white;
-    margin-bottom: 30px;
     font-size: 20px;
     transition: font-size 0.5s;
     width: 100%;
     font-family: 'Courgette', cursive;
     opacity: 0.8;
+}
+
+#auth-forms form input:not([type="checkbox"]).error {
+    border-bottom: 2px solid #e48080;
 }
 
 #auth-forms form input:focus {
@@ -147,8 +158,63 @@ main {
     color: white;
 }
 
-#auth-forms form .checkBox {
+#auth-forms form input[type=checkbox] {
     opacity: 0.8;
+}
+
+#auth-forms form .checkBox label {
+    position: relative;
+}
+
+#auth-forms form input[type=checkbox]:hover + label:before {
+     background: #636983;
+}
+
+#auth-forms form input[type=checkbox]:checked + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 13px;
+    height: 13px;
+    border-color: #636983;
+    background: #636983;
+    box-shadow: inset 0px 0px 2px #636983;
+    position: absolute;
+    margin-left: -21px;
+    margin-top: 3px;
+    border-radius: 2px;
+}
+
+#auth-forms form input[type=checkbox]:checked + label:after {
+     content: '';
+     position: absolute;
+     left: -19px;
+     top: 8px;
+     background: white;
+     width: 1.5px;
+     height: 1.5px;
+     box-shadow:
+             2px 0 0 white,
+             4px 0 0 white,
+             4px -2px 0 white,
+             4px -4px 0 white,
+             4px -6px 0 white,
+             4px -8px 0 white;
+     transform: rotate(45deg);
+ }
+
+#auth-forms form .info_msg {
+    font-size: 15px;
+    display: none;
+    margin-top: 2px;
+    color: #e48080;
+    letter-spacing: 1px;
+    position: absolute;
+}
+
+#auth-forms form .info_msg.active {
+   display: block;
 }
 
 #auth-forms form .buttons-container button {
