@@ -7,7 +7,6 @@ document.querySelectorAll(".form-name").forEach((el) => {
 });
 
 class Validator {
-    input;
     message;
     errorElement;
     errors;
@@ -23,59 +22,57 @@ class Validator {
 
         this.form.forEach((element) => {
             if(element.type == "checkbox") {
-                return this.checkedCheckbox(element);
+               return this.checkedCheckbox(element);
             }
 
             this.message = "";
-            let errorSpan = document.querySelector("." + element.id + "_error");
+            let errorSpans = document.querySelectorAll(".error_msg");
 
-            errorSpan.classList.remove("active");
-            errorSpan.previousElementSibling.classList.remove("error");
-
-            let elementFieldName = element.name.replace("-", " ");
+            errorSpans.forEach(el => {
+                el.classList.remove("active");
+                el.previousElementSibling.classList.remove("error");
+            })
 
             if(element.value === '') {
-                this.message = elementFieldName + " field is required";
-                this.errorElement = "." + element.id + "_error";
-
-                this.errors.push({"element": this.errorElement, "message": this.message });
+                this.setMessagesAndErrorsClasses(element,"field is required");
             } else if(element.value.length < 3) {
-                this.message = "";
-                this.message = elementFieldName + " should be more than 2 symbols";
-                this.errorElement = "." + element.id + "_error";
-
-                this.errors.push({"element": this.errorElement, "message": this.message });
+                this.setMessagesAndErrorsClasses(element,"should be more than 2 symbols");
             } else {
-                if(!this.equalPasswords()) {
-                    this.message = "";
-                    this.message = "Passwords do not match";
+                if(element.name == "confirm-password") {
+                    if (!this.equalPasswords()) {
+                        this.message = "";
+                        this.message = "Passwords do not match";
 
-                    this.errors.push({"element": ".password_error", "message": this.message });
-                    this.errors.push({"element": ".confirmPassword_error", "message": this.message });
+                        this.errors.push({"element": ".password_error", "message": this.message});
+                        this.errors.push({"element": ".confirmPassword_error", "message": this.message});
+                    }
                 }
 
                 if(element.type == "email") {
                     if(!this.validateEmail(element.value)) {
-                        this.message = "";
-                        this.message = "invalid email data";
-                        this.errorElement = "." + element.id + "_error";
-
-                        this.errors.push({"element": this.errorElement, "message": this.message });
+                        this.setMessagesAndErrorsClasses(element, "invalid email data");
                     }
                 }
             }
 
             this.displayErrors();
-
-            if(this.errors.length === 0) {
-                alert("success");
-                //create new User
-            }
         });
+
+        if(this.errors.length === 0) {
+            alert("success");
+            const user = new User();
+        }
     }
 
     checkedCheckbox(element) {
-        return element.checked ? element.checked : false;
+        if(element.required && element.checked) {
+            element.nextElementSibling.classList.remove("error_msg");
+            element.nextElementSibling.classList.remove("active");
+        } else {
+            element.nextElementSibling.classList.add("error_msg");
+            element.nextElementSibling.classList.add("active");
+        }
+        return element.checked;
     }
 
     equalPasswords() {
@@ -99,6 +96,15 @@ class Validator {
         return email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
+    }
+
+    setMessagesAndErrorsClasses(element, text) {
+        let elementFieldName = element.name.replace("-", " ");
+        this.message = "";
+        this.message = elementFieldName + " " + text;
+        this.errorElement = "." + element.id + "_error";
+
+        this.errors.push({"element": this.errorElement, "message": this.message });
     }
 
     displayErrors() {

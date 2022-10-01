@@ -204,17 +204,20 @@ main {
      transform: rotate(45deg);
  }
 
-#auth-forms form .info_msg {
+#auth-forms form span.error_msg {
     font-size: 15px;
     display: none;
     margin-top: 2px;
-    color: #e48080;
     letter-spacing: 1px;
     position: absolute;
 }
 
-#auth-forms form .info_msg.active {
-   display: block;
+#auth-forms form span.error_msg.active {
+    display: block;
+}
+
+#auth-forms form .error_msg.active {
+    color: #e48080;
 }
 
 #auth-forms form .buttons-container button {
